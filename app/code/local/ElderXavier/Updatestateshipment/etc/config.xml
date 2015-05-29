@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ElderXavier_Updatestateshipment>
+            <version>0.1.0</version>
+        </ElderXavier_Updatestateshipment>
+    </modules>
+    <global>
+        
+		<models>
+            <updatestateshipment>
+                <class>ElderXavier_Updatestateshipment_Model</class>                
+            </updatestateshipment>            
+        </models>
+        <blocks>
+            <updatestateshipment>
+                <class>ElderXavier_Updatestateshipment_Block</class>
+            </updatestateshipment>
+        </blocks>
+        <helpers>
+            <updatestateshipment>
+                <class>ElderXavier_Updatestateshipment_Helper</class>
+            </updatestateshipment>  
+        </helpers>
+			
+			<events>
+				<catalog_product_save_after>
+					<observers>
+						<elder>						
+							<class>updatestateshipment/observer</class>
+							<method>catalog_product_save_toafter</method>
+						</elder>
+					</observers>
+				</catalog_product_save_after>	
+			
+				<sales_order_shipment_save_after>
+					<observers>
+						<elder>						
+							<class>updatestateshipment/observer</class>
+							<method>sales_order_shipment_save_toafter</method>
+						</elder>
+					</observers>
+				</sales_order_shipment_save_after>
+			
+			
+			</events>
+		
+	</global>
+	
+	<frontend>
+        <routers>			
+            <updatestateshipment>
+                <use>standard</use>
+                <args>
+                    <module>ElderXavier_Updatestateshipment</module>
+                    <frontName>updatestateshipment</frontName>
+                </args>
+            </updatestateshipment>	
+		<!--
+		<layout>
+            <updates>
+                <updatestateshipment>
+                      <file>updatestateshipment.xml</file>
+                </updatestateshipment>
+            </updates>
+        </layout>
+		-->
+			
+        </routers>  
+    </frontend>    
+</config>
